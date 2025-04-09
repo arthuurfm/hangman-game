@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title class="game-name">Hangman Game</title>
+    <link rel="stylesheet" href="./style.css">
+    <script type="module" src="./scripts/script.js" defer></script>
+</head>
+<body>
+  <div class="menu show">
+    <div class="content">
+      <h1 class="game-name">Hangman Game</h1>
+      <button class="start">Start</button>
+      <button class="settings">Settings</button>
+    </div>
+  </div>
+
+  <div class="settings-menu">
+    <div class="content">
+      <h2 class="settings-title">Settings:</h2>
+        <div class="language">
+          <label for="language" class="language-text">Language:</label>
+          <select id="language">
+            <option value="en">English</option>
+            <option value="es">Spanish</option>
+            <option value="ptBr">Portuguese</option>
+            <option value="fr">French</option>
+          </select>
+        </div>
+        <div class="show-hint-box">
+          <label for="show-hint" class="show-hint-text">Show hint:</label>
+          <input type="checkbox" name="show-hint" id="show-hint" class="show-hint" checked>
+        </div>
+        <button class="save-settings">save</button>
+    </div>  
+  </div>
+
+  <div class="game-modal">
+    <div class="content">
+      <img src="./images/lost.gif" alt="gif">
+      <h4>Game Over!</h4>
+      <p>A resposta correta era: <b>palavra</b></p>
+      <button class="play-again">New game</button>
+      <button class="back-to-menu">menu</button>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="hangman-box">
+      <img src="./images/hangman-0.svg" alt="hangman-img">
+      <h2 class="game-name">Hangman Game</h2>
+    </div>
+    <div class="game-box">
+      <ul class="word-display">      
+      </ul>
+      <h4 class="hint-text">
+        <span>Hint:</span>
+        <b>Lorem ipsum dolor sit amet consectetur adipisicing elit.</b>
+      </h4>
+      <h4 class="guesses-text">
+        <span>Incorrects:</span>
+        <b>0 / 6</b>
+      </h4>
+      <div class="keyboard"></div>
+    </div>
+  </div>
+
+  <footer>
+    <div>
+      <p>arthur<b>_dev</b></p>
+    </div>
+    <div>
+      <a href="https://www.instagram.com/arthuur.fm/" target="_blank">
+        <img src="./images/instagram-icon.png" alt="instagram-icon">
+      </a>
+      <a href="https://x.com/arthuur_fm/" target="_blank">
+        <img src="./images/x-icon.png" alt="x-icon">
+      </a>
+      <a href="https://www.linkedin.com/in/arthur-franz-178a79243/" target="_blank">
+        <img src="./images/linkedin-icon.png" alt="linkedin-icon">
+      </a>
+      <a href="https://github.com/arthuurfm/" target="_blank">
+        <img src="./images/git-icon.png" alt="github-icon">
+      </a>
+    </div>
+    <div><p>1.1.0</p></div>
+  </footer>
+</body>
+</html>

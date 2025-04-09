@@ -1,0 +1,340 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #121212;
+  padding: 0 10px;
+  font-family: "Open Sans", sans-serif;
+}
+
+/* conteúdo */
+.container.show {
+  width: 850px;
+  background-color: #fff;
+  pointer-events: auto;
+  display: flex;
+  gap: 70px;
+  align-items: flex-end;
+  padding: 60px 40px;
+  border-radius: 10px;
+}
+
+.container {
+  display: none;
+  pointer-events: none;
+}
+
+/* forca */
+.hangman-box img {
+  max-width: 270px;
+}
+
+.hangman-box h2 {
+  font-size: 1.45rem;
+  margin-top: 20px;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+/* tela da palavra */
+.word-display {
+  display: flex;
+  gap: 10px;
+  list-style: none;
+  align-items: center;
+  justify-content: center;
+}
+
+.word-display .letter {
+  width: 28px;
+  margin-bottom: 40px;
+  border-bottom: 3px solid #000;
+  
+  font-size: 2rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  text-align: center;
+}
+
+/* letra acertada */
+.word-display .letter.guessed {
+  border-color: transparent;
+  margin: -40px 0 35px;
+}
+
+/* game */
+.game-box h4 {
+  text-align: center;
+  font-size: 1.1rem;
+  font-weight: 500;
+  margin-bottom: 15px;
+}
+
+.game-box h4 b {
+  font-weight: 600; 
+}
+
+/* dica */
+.hint-text.off {
+  display: none;
+}
+
+.hint-text.on {
+  display: block;
+}
+
+/* tentativas */
+.game-box .guesses-text b {
+  color: #ff0000;
+}
+
+/* teclado */
+.game-box .keyboard {
+  display: flex;
+  gap: 5px;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-top: 40px;
+}
+
+/* padrão dos botões */
+:where(.game-modal, .keyboard, .menu, .settings-menu) button {  
+  color: #fff;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  outline: none;
+  border: none;
+  background: #575757;
+  border-radius: 4px;
+  text-transform: uppercase;
+}
+
+:where(.game-modal, .keyboard, .menu, .settings-menu) button:hover {
+  background: #464646;
+}
+
+/* botões do teclado */
+.keyboard button {
+  padding: 7px;
+  width: calc(100% / 9 - 5px);
+}
+
+.keyboard button[disabled] {
+  opacity: 0.6;
+  pointer-events: none;
+}
+
+/* menu inicial do jogo */
+.menu, .settings-menu {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 999;
+}
+
+.menu .content, .settings-menu .content  {
+  width: 300px;
+  height: 300px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+.menu h1 {
+  font-size: 2.5rem;
+  margin: 10px;
+}
+
+.menu button {
+  padding: 12px 24px;
+  margin: 10px;
+}
+
+/* menu de opções */
+.settings-menu {
+  display: none;
+}
+
+.settings-menu.show, .menu.show {
+  display: flex;
+}
+
+.settings-menu .content {
+  align-items: center;
+}
+
+.settings-menu div {
+  width: 70%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.settings-menu h2 {
+  font-size: 2rem;
+}
+
+.settings-menu label {
+  font-size: 1.35rem;
+  font-weight: 400;
+  margin-right: 16px;
+}
+
+/* selecionando idioma */
+.settings-menu select {
+  border: 3px solid #575757;
+  outline: none;
+  width: 50%;
+  height: 30px;
+  font-size: 16px;
+  font-weight: bold;
+  border-radius: 10px;
+}
+
+.settings-menu option {
+  color: #fff;
+  font-size: 16px;
+  font-weight: bold;
+  background-color: #575757;
+}
+
+.settings-menu option:checked {
+  background-color: #464646;
+}
+
+/* mostrar dica */
+.settings-menu input {
+  height: 20px;
+  width: 20px;
+}
+
+.settings-menu button {
+  padding: 8px 16px;
+}
+
+/* tela de status final */
+.game-modal {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 999;
+  padding: 0 10px;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  transition: opacity 0.4s ease;
+}
+
+.game-modal.show {
+  display: flex;
+  pointer-events: auto;
+}
+
+.game-modal .content, .menu .content, .settings-menu .content {
+  background: #fff;
+  max-width: 420px;
+  width: 100%;
+  text-align: center;
+  border-radius: 10px;
+  padding: 30px;
+}
+
+.game-modal img {
+  max-width: 130px;
+  margin-bottom: 20px;
+}
+
+.game-modal h4 {
+  font-size: 1.53rem;
+}
+
+.game-modal p {
+  font-size: 1.15rem;
+  margin: 15px 0 30px;
+  font-weight: 500;
+}
+
+.game-modal p b {
+  color: #464646;
+}
+
+.game-modal button {
+  width: 125px;
+  height: 42px;
+  margin: 4px;
+}
+
+/* rodapé */
+footer {
+  width: 420px;
+  height: 50px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding: 12px;
+  border-top: 1px solid #ccc;
+  position: fixed;
+  color: #ccc;
+  bottom: 10px;
+  pointer-events: auto;
+  z-index: 999;
+}
+
+footer div {
+  width: calc(100% / 3);
+  display: flex;
+  justify-content: center;
+}
+
+footer p b {
+  background-color: #ccc;
+  color: #242424;
+  border-radius: 5px;
+}
+
+footer a {
+  display: flex;
+  width: 25px;
+  margin: 0 4px;
+}
+
+footer img {
+  width: 100%;
+  height: 100%;
+}
+
+@media (max-width: 782px) {
+  /* conteúdo */
+  .container {
+    flex-direction: column;
+    padding: 30px;
+    align-items: center;
+  }
+
+  /* forca */
+  .hangman-box img {
+    max-width: 200px;
+  }
+
+  .hangman-box h2 {
+    display: none;
+  }
+
+  footer {
+    width: 280px;
+  }
+}
