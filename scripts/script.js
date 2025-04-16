@@ -125,11 +125,16 @@ const initGame = (button, clickedLetter) => {
 
 // voltando para o menu.
 const showMenu = () => {
-  resetGame();
+  getRandomWord();
   gameModal.classList.remove("show");
   game.classList.remove("show");
   menu.classList.add("show");
 }
+
+const newGame = () => {
+  getRandomWord();
+  game.classList.add("show");
+} 
 
 // criando os botões do teclado e escutando eventos.
 for (let i = 97; i <= 122; i++) {
@@ -143,7 +148,7 @@ for (let i = 97; i <= 122; i++) {
 getRandomWord();
 
 // eventos dos botões.
-playAgainBtn.addEventListener("click", getRandomWord);
+playAgainBtn.addEventListener("click", newGame);
 startBtn.addEventListener("click", startGame);
 settingsBtn.addEventListener("click", showSettingsMenu);
 saveSettingsBtn.addEventListener("click", saveSettings);
